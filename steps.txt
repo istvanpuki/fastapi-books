@@ -1,0 +1,68 @@
+1.Create a Python Virtual Environment
+    Ctrl + Shift + P
+    Python: Create Environment
+    Select Venv Creates a '.venv' ......
+    Select The installed Python interpreter
+
+2. Open the .venv \ Scripts folder on the terminal
+    cd .venv\Scripts
+    Type activate
+    If You get an error type .\activate
+    Now You see (.venv) on the console with green
+
+3. Type on the console: pip list
+    You see the dependencies
+
+4. Let's create The FASTAPI Backend
+    pip install FASTAPI
+    pip install uvicorn
+    FASTAPI is the framework and uvicorn is the ASGI web server
+
+5. What is Uvicorn?
+    Uvicorn is an ASGI web server implementation for Python. Until recently Python has lacked a minimal low-level server/application interface for async frameworks. The ASGI specification fills this gap, and means we're now able to start building a common set of tooling usable across all async frameworks.
+
+6. Create books.py on our project's root folder
+
+7. After We write some commands to books.py We can use console
+    Dont forget to change back to root folder (cd.. and cd.. again) (Use your project's root foolder to running FASTAPI commands)
+    type uvicorn books:app --reload
+
+8. In the browser on http://127.0.0.1.8000 port (or localhost:8000) You will see your first FASTAPI running app.
+    The read_api function give you back a message in {}
+    After that check in Google Chrome the development tools (Push f12 and check The Network Tab)
+    You will see the uvicorn server, and the http get request is succesfull. (green symbol and 200 status code)
+
+9. Jump back the basic URL and type http://127.0.0.1.8000\docs
+
+10. Now We hopped into a FASTAPI Swagger UI Documentation. This is installed by FASTAPI.
+
+11. Click the read_api function button.
+    You can see the function hasn't got parameters.
+    Lets click try it out and execute
+    After that you see the response in response body. You can also see the response headers which include metadatas.
+
+12. Good. Now Let's create a path parameter.
+    On the /name route create the get_name function
+    The parameter is name:str
+    Check on the swagger docs. http://127.0.0.1:8000/name -> First Try it out and execute on swagger.
+    You will see the 200 response.
+    Second check the url on the browser. What you see?
+    Please also check the vscode console.
+    What happen there? Give me the right answer! :) Pls explain everything correctly!
+
+13. What is Pydantic? We wanna post data and we use Pydantic to data validation.
+    Import pydantic (books.py second row)
+    from pydantic import Basemodel, Field
+    After initizalize the FASTAPI app create a Book class. (books.py 6. row)
+        class Book(BaseModel):
+        id: UUID
+        title: str = Field(min_length=1)
+        author: str = Field(min_length=1, max_length=100)
+        description: str = Field(min_length=1, max_length=100)
+        rating: int = Field(gt=-1, lt=101)
+14. Create an empty list called Books
+15. Get the code from github and analyze it.
+  
+    
+
+
